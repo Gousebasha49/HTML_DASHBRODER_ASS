@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Data to Search Box</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="search"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .search-container {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 2px dashed #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Input Form -->
+  <form id="userForm">
+    <div class="form-group">
+      <label for="userName">Full Name:</label>
+      <input type="text" id="userName" name="userName" required placeholder="Jane Doe">
+    </div>
+
+    <div class="form-group">
+      <label for="userEmail">Email Address:</label>
+      <input type="email" id="userEmail" name="userEmail" required placeholder="jane@example.com">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Output / Search Box -->
+  <div class="search-container">
+    <label for="searchBox">Search Box (Live Result):</label>
+    <input type="search" id="searchBox" placeholder="Submitted data will appear here..." readonly>
+  </div>
+
+  <script>
+    // Storage array to hold submitted submission records
+    const submissionHistory = [];
+
+    const form = document.getElementById('userForm');
+    const searchBox = document.getElementById('searchBox');
+
+    form.addEventListener('submit', function (event) {
+      // 1. Prevent default page reload on submission
+      event.preventDefault();
+
+      // 2. Capture values from input fields
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+
+      // 3. Store data in an object and push to the history array
+      const entry = { name, email, timestamp: new Date() };
+      submissionHistory.push(entry);
+
+      // 4. Update the search box value dynamically
+      searchBox.value = `${entry.name} (${entry.email})`;
+
+      // 5. Reset input fields for subsequent entries
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
