@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Page - CSS Selectors Demo</title>
+  <style>
+    /* 1. Universal & Element Selectors */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fa;
+      color: #333;
+      padding: 24px;
+    }
+
+    h1, h2 {
+      margin-bottom: 12px;
+    }
+
+    /* 2. ID Selector */
+    #main-header {
+      text-align: center;
+      padding: 20px;
+      background-color: #232f3e;
+      color: #ffffff;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    /* 3. Class Selectors */
+    .catalog-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      width: 260px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #b12704;
+      margin-bottom: 12px;
+    }
+
+    /* 4. Attribute Selector */
+    button[type="button"] {
+      background-color: #ffd814;
+      border: 1px solid #fcd200;
+      border-radius: 20px;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* 5. Pseudo-class Selectors (:hover, :active) */
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    button[type="button"]:hover {
+      background-color: #f7ca00;
+    }
+
+    button[type="button"]:active {
+      transform: scale(0.98);
+    }
+
+    /* 6. Pseudo-class (:nth-child) for badges */
+    .tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .product-card:nth-child(odd) .tag {
+      background-color: #e67a00; /* Best Seller */
+    }
+
+    .product-card:nth-child(even) .tag {
+      background-color: #007600; /* In Stock */
+    }
+  </style>
+</head>
+<body>
+
+  <header id="main-header">
+    <h1>Featured Products</h1>
+    <p>Browse our latest electronics collection</p>
+  </header>
+
+  <main class="catalog-container">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <span class="tag">Best Seller</span>
+      <img src="https://picsum.photos/300/200?random=1" alt="Wireless Headphones" class="product-image">
+      <div class="product-title">Wireless ANC Headphones</div>
+      <p class="price">$79.99</p>
+      <button type="button">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <span class="tag">Prime Deal</span>
+      <img src="https://picsum.photos/300/200?random=2" alt="Smart Fitness Watch" class="product-image">
+      <div class="product-title">Smart Fitness Tracker</div>
+      <p class="price">$49.99</p>
+      <button type="button">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <span class="tag">Top Rated</span>
+      <img src="https://picsum.photos/300/200?random=3" alt="Mechanical Keyboard" class="product-image">
+      <div class="product-title">RGB Mechanical Keyboard</div>
+      <p class="price">$89.99</p>
+      <button type="button">Add to Cart</button>
+    </div>
+  </main>
+
+</body>
+</html>
